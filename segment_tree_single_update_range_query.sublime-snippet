@@ -49,8 +49,7 @@ int query(int node, int l, int r, int s, int e) {
 }
 
 void solve() {
-
-	$0
+    // write solution
 }
 
 int32_t main() {
