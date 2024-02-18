@@ -1,0 +1,75 @@
+<snippet>
+	<content><![CDATA[
+#include <bits/stdc++.h>
+using namespace std;
+
+using ll = long long;
+
+const int N = 2e5 + 9;
+int tree[N * 4], arr[N + 5];
+
+void build(int node, int l, int r) {
+    if(l == r) {
+        tree[node] = arr[l];
+        return;
+    }
+
+    int mid = (l + r) / 2, left = node * 2, right = (node * 2) + 1;
+
+    build(left, l, mid);
+    build(right, mid + 1, r);
+    
+    tree[node] = tree[left] + tree[right];
+}
+
+void update(int node, int l, int r, int pos, int value) {
+    if(pos > r or pos < l) return;
+    if(pos == l and pos == r) {
+        tree[node] = value;
+        return;
+    }
+
+    int mid = (l + r) / 2, left = node * 2, right = (node * 2) + 1;
+
+    update(left, l, mid, pos, value);
+    update(right, mid + 1, r, pos, value);
+
+    tree[node] = tree[left] + tree[right];
+}
+
+int query(int node, int l, int r, int s, int e) {
+    if(s > r or e < l) return 0;
+    if(l >= s and r <= e) return tree[node];
+    int mid = (l + r) / 2, left = node * 2, right = (node * 2) + 1;
+    
+    int res_left = query(left, l, mid, s, e);
+    int res_right = query(right, mid + 1, r, s, e);
+
+    return res_left + res_right;
+}
+
+void solve() {
+
+	$0
+}
+
+int32_t main() {
+
+    // S4DM4N S4K1B 
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr); cout.tie(nullptr);
+
+#ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+#endif 
+
+    solve();
+    return 0;
+}
+
+]]></content>
+	
+	 <tabTrigger>segment_tree</tabTrigger> 
+	 <scope>source.c++</scope> 
+</snippet>
