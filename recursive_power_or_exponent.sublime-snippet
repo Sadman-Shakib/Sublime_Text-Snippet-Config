@@ -4,11 +4,8 @@ int power(int n, int p, int mod) {
     if(p == 0) return 1;
     if(p == 1) return n;
     int res = 1ll * power(n, p / 2, mod) % mod;
-    if(p % 2) {
-        res = (((1ll * res * res) % mod ) * n % mod) % mod;
-    } else {
-        res = ((1ll * res * res) % mod ) % mod;
-    }
+    if(p % 2) res = (((1ll * res * res) % mod) * n % mod) % mod;
+    else res = ((1ll * res * res) % mod) % mod;
     return res;
 }
 ]]></content>
