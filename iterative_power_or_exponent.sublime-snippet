@@ -1,0 +1,16 @@
+<snippet>
+	<content><![CDATA[
+int power(int n, int p, int mod) {
+    int res = 1;
+    while(p) {
+        if(p % 2) res = (1ll * res * n) % mod;
+        p /= 2;
+        n = 1ll * n * n % mod;
+    }
+    return res;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	 <tabTrigger>power_iterative_or_exponent</tabTrigger> 	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	 <scope>source.c++</scope> 
+</snippet>
